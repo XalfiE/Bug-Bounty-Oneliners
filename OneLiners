@@ -1,0 +1,4 @@
+Oneliner to get HTTP Titles:
+for i in $(cat urls.txt ); do echo "$i | $(curl --connect-timeout 0.5 $i -so - | grep -iPo '(?<=<title>)(.*)(?=</title>)')"; done | tee -a titles.txt
+
+curl -s hxxps://petstore.swagger.io/v2/swagger.json | jq '.paths | keys[]'
