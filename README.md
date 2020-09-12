@@ -2,7 +2,7 @@
 Oneliners curated from my experience and from the internet
 
 
-### Oneliner to get HTTP Titles:
+### Oneliner to get HTTP Titles:(Update! HTTPX does a better job :-) )
 ```bash
 for i in $(cat urls.txt ); do echo "$i | $(curl --connect-timeout 0.5 $i -so - | grep -iPo '(?<=<title>)(.*)(?=</title>)')"; done | tee -a titles.txt
 ```
