@@ -21,6 +21,8 @@ subfinder -d {target} >> domains ; assetfinder -subs-only {target} >> domains ; 
 apktool d apk;grep -EHim "accesskey|admin|aes|api_key|apikey|checkClientTrusted|crypt|http:|https:|password|pinning|secret|SHA256|SharedPreferences|superuser|token|X509TrustManager|insert into" APKfolder
 ```
 ### Gather all urls, send to burp
+```bash
 cat hosts | sed 's/https\?:\/\///' | gau > urls.txt
 cat urls.txt | grep -P "\w+\.js(\?|$)" | sort -u > jsurls.txt
 ffuf -mc 200 -w jsurls.txt:HFUZZ -u HFUZZ -replay-proxy http:127.0.0.1:8080
+```
